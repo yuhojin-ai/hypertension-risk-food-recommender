@@ -20,3 +20,7 @@
 
 ## 👥 팀명
 CareBite
+
+## 주의
+`data/combined/health_checkup_2022_2023.csv`는 200MB 이상으로 인해 GitHub에 포함되어 있지 않습니다.
+대신 `data/sample/health_checkup_sample.csv` 파일을 통해 전체 구조를 파악할 수 있습니다.
