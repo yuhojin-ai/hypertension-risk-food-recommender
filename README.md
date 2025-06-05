@@ -29,9 +29,6 @@
 - `data/`: 원본 및 전처리된 데이터
 - `notebooks/`: 분석용 Jupyter 노트북
 
-##  성능 요약
-*작성 예정 (예: AUC, 정확도 등)*
-
 ##  팀명
 CareBite
 
