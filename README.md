@@ -1,17 +1,30 @@
-# 🩺 Hypertension Risk Food Recommender
+# Hypertension Risk Food Recommender
 
 ##  프로젝트 소개
 건강검진 데이터를 활용하여 고혈압 위험도를 예측하고,  
-개인의 혈액검사 지표에 기반해 맞춤형 가공식품을 추천하는 시스템입니다.
+개인의 혈액검사 지표에 기반해 맞춤형 가공식품을 추천하는 시스템
 
-##  주요 기능
-- 고혈압 위험도 예측 (혈액검사 기반)
-- 성분 기반 건강 지수 계산
-- 고위험군 맞춤 가공식품 추천
+## 주요 기능
+
+-  고혈압 위험도 예측 (Logistic Regression + XGBoost 앙상블)
+-  혈액지표 기반 위험도 파생지표 생성
+-  개인별 위험등급 산출 (정상, 주의, 위험, 고위험)
+-  성분 가중치 기반 건강 지수 산출
+-  가공식품 DB 기반 맞춤형 식품 추천
+-  Streamlit 기반 사용자 인터페이스
+-  OCR 기반 건강검진표 자동 입력 (NAVER CLOVA OCR API 연동)
 
 ##  사용 기술
-*작성 예정 (예: Python, XGBoost, Pandas 등)*
+- 최종 예측 모델: Logistic Regression
 
+## 식품 추천 알고리즘 개요
+
+- 위험도 기반 개인별 성분 가중치 설정
+- DASH + 논문 기반 가중치 조정
+- 위험성분 (나트륨, 포화지방, 콜레스테롤 등) 감점 적용
+- 결핍성분 (식이섬유, 칼륨, 칼슘 등) 보정 가점 적용
+- 건강지수(Health Score) 산출 후 상위 적합 식품 추천
+  
 ##  프로젝트 구성
 - `data/`: 원본 및 전처리된 데이터
 - `notebooks/`: 분석용 Jupyter 노트북
@@ -50,8 +63,19 @@ CareBite
   - 통계적 이상치(IQR)가 아닌, **의학적/생리학적 허용 범위 기준**으로 제거  
   - 고위험 환자의 수치는 예측 타겟 특성으로 간주하여 **제거하지 않음**  
   - 조건부 변수(간수치, 혈색소 등)는 데이터 분포와 임상 기준을 반영해 **필요 시에만 제거 적용**
-
+ 
+- **파생 변수 생성**
+  - 혈액지표 기반 비율 파생 변수 생성 (예: TG/HDL, ALT/AST 등)
 ---
+
+## 사용 기술 스택
+
+- Python 3.12
+- pandas, numpy, scikit-learn, xgboost, optuna
+- imbalanced-learn (SMOTE)
+- Streamlit
+- MySQL
+- NAVER CLOVA OCR API
 
 ##  주의 사항
 
